@@ -12,10 +12,11 @@ Follow these steps to run the project locally:
    cd react-movie-app-practice
 
 3. Install Dependencies
+   
    npm install
 
-4. Environment Setup (Required)
-5. 
+5. Environment Setup (Required)
+   
    Create a file named .env.local in the project root and add your TMDB API key:
    
    VITE_TMDB_API_KEY=your_actual_api_token_here
