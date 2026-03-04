@@ -1,16 +1,25 @@
-# React + Vite
+# React Movie App 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple movie browsing application built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these steps to run the project locally:
 
-## React Compiler
+### 1. Clone the repository
+```bash
+git clone https://github.com/sobitbhattarai94/react-movie-app-practice.git
+cd react-movie-app-practice
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Installing dependencies
+```bash
+npm install
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 3. Environment Setup (Required)
+The .env.local file is not included in the repository. You must create it manually to use the TMDB API.
+ - Create a file named .env.local in the project root.
+ - Get your API Key from The Movie Database (TMDB) = https://developer.themoviedb.org/docs/getting-started.
+ - Add the following line to your .env.local:
+    VITE_TMDB_API_KEY=your_actual_api_token_here
+### 4. Run
+npm run dev
