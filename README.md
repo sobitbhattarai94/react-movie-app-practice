@@ -8,13 +8,14 @@ Follow these steps to run the project locally:
 
 1. Clone the repository
    git clone https://github.com/sobitbhattarai94/react-movie-app-practice.git
+   
    cd react-movie-app-practice
 
-2. Install Dependencies
+3. Install Dependencies
    npm install
 
-3. Environment Setup (Required)
-4. 
+4. Environment Setup (Required)
+5. 
    Create a file named .env.local in the project root and add your TMDB API key:
    
    VITE_TMDB_API_KEY=your_actual_api_token_here
