@@ -14,11 +14,15 @@ Follow these steps to run the project locally:
    npm install
 
 3. Environment Setup (Required)
+4. 
    Create a file named .env.local in the project root and add your TMDB API key:
+   
    VITE_TMDB_API_KEY=your_actual_api_token_here
+   
    (Get your key from TMDB): website link: https://developer.themoviedb.org/docs/getting-started
+   
 
-4. Run the Project
+6. Run the Project
    npm run dev
 
 Open http://localhost:5173 in your browser.
