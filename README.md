@@ -29,6 +29,8 @@ Follow these steps to run the project locally:
 
 Open http://localhost:5173 in your browser.
 
+Flowbite Ui components: https://flowbite.com/
+
 ---
 ### 🛠️ Tech Stack
-React 19 | Vite | Tailwind CSS 4 | TMDB API
+React 19 | Vite | Tailwind CSS 4 | TMDB API | Flowbite
