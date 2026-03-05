@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDebounce } from "react-use";
 import Search from "./components/Search";
 import Card from "./components/Card";
+import Skeleton from "./components/Skeleton";
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const API_OPTIONS = {
@@ -19,11 +21,17 @@ const App = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMovies = async () => {
+  const [debounceSearchTerm, setDebounceSearchTerm] = useState("");
+
+  useDebounce(() => setDebounceSearchTerm(searchTerm), 500, [searchTerm]);
+
+  const fetchMovies = async (query = "") => {
     setIsLoading(true);
     setErrorMessage("");
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query
+        ? `${API_BASE_URL}/search/movie?query=${query}`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
       const response = await fetch(endpoint, API_OPTIONS);
 
@@ -37,6 +45,7 @@ const App = () => {
         setMovieList([]);
         return;
       }
+
       setMovieList(data.results || []);
     } catch (e) {
       console.log(`error while fetching the movie ${e}`);
@@ -46,9 +55,15 @@ const App = () => {
     }
   };
 
+  // this made every letter become an api request overloading the servers
+  // useEffect(() => {
+  //   fetchMovies(searchTerm);
+  // }, [searchTerm]);
+
+  // using debounce hoook that lets user continue typing without making request. in this case only makes requests every stop of half a second
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(debounceSearchTerm);
+  }, [debounceSearchTerm]);
   return (
     <main>
       <div className="pattern" />
@@ -65,7 +80,11 @@ const App = () => {
         <section className="all-movies">
           <h2 className="mt-[40px]">ALL MOVIES</h2>
           {isLoading ? (
-            <p className="text-white">Loading...</p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 ">
+              {[...Array(3)].map((_, index) => (
+                <Skeleton key={index} />
+              ))}
+            </div>
           ) : errorMessage ? (
             <p className="text-red-500">{errorMessage}</p>
           ) : (
